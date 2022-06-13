@@ -1,13 +1,13 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:netflixclone/Favorites.dart';
-import 'package:netflixclone/LoginPage.dart';
-import 'package:netflixclone/MainPage.dart';
-import 'package:netflixclone/Profile.dart';
-import 'package:netflixclone/Settings.dart';
-import 'package:netflixclone/SignUp.dart';
-import 'package:netflixclone/dosyaIslemleri.dart';
-import 'package:netflixclone/weatherScreen.dart';
+import 'package:netflixclone/views/Favorites.dart';
+import 'package:netflixclone/views/login/LoginPage.dart';
+import 'package:netflixclone/views/MainPage.dart';
+import 'package:netflixclone/views/Profile.dart';
+import 'package:netflixclone/views/register/Settings.dart';
+import 'package:netflixclone/views/register/SignUp.dart';
+import 'package:netflixclone/services/dosyaIslemleri.dart';
+import 'package:netflixclone/views/weatherScreen.dart';
 import 'package:path_provider/path_provider.dart';
 
 

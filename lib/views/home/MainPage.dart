@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:netflixclone/Kategoriler.dart';
-import 'package:netflixclone/KategorilerDao.dart';
+import 'package:netflixclone/models/Kategoriler.dart';
+import 'package:netflixclone/utilities/KategorilerDao.dart';
 
-import 'FilmlerSayfa.dart';
+import 'movie/FilmlerSayfa.dart';
 
 
 class MainPage extends StatefulWidget {

@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:netflixclone/colors.dart';
-import 'package:netflixclone/weatherModel.dart';
-import 'package:netflixclone/apiservice.dart';
+import 'package:netflixclone/models/colors.dart';
+import 'package:netflixclone/models/weatherModel.dart';
+import 'package:netflixclone/services/apiservice.dart';
 
 class WeatherScreen extends StatefulWidget {
   const WeatherScreen({Key? key}) : super(key: key);

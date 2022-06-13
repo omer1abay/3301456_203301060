@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:netflixclone/FavoriteList.dart';
-import 'package:netflixclone/Favorites.dart';
-import 'package:netflixclone/FilmModel.dart';
-import 'package:netflixclone/LoginPage.dart';
-import 'package:netflixclone/Trailers.dart';
+import 'package:netflixclone/utilities/FavoriteList.dart';
+import 'package:netflixclone/pages/Favorites.dart';
+import 'package:netflixclone/models/FilmModel.dart';
+import 'package:netflixclone/pages/LoginPage.dart';
+import 'package:netflixclone/pages/Trailers.dart';
 
 class DetailPage extends StatefulWidget {
   late FilmModel film;

@@ -1,22 +1,22 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:netflixclone/Drawer.dart';
-import 'package:netflixclone/Settings.dart';
-import 'package:netflixclone/auth_service.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:netflixclone/pages/LoadingScreen.dart';
+import 'package:netflixclone/services/auth_service.dart';
+import 'package:netflixclone/services/dosyaIslemleri.dart';
 
-import 'User.dart';
+import '../models/User.dart';
 
-class UpdateAccount extends StatefulWidget {
+class SignUp extends StatefulWidget {
+  static List<User> userList = <User>[];
 
-  const UpdateAccount({Key? key}) : super(key: key);
+  const SignUp({Key? key}) : super(key: key);
 
   @override
-  _UpdateAccountState createState() => _UpdateAccountState();
+  _SignUpState createState() => _SignUpState();
 }
 
-class _UpdateAccountState extends State<UpdateAccount> {
+class _SignUpState extends State<SignUp> {
   final formKey = GlobalKey<FormState>();
   late var ekranBilgisi;
   late double width;
@@ -24,8 +24,8 @@ class _UpdateAccountState extends State<UpdateAccount> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-
+  final auth_service _authservice = auth_service();
+  final DosyaIslemleri _dosyaIslemleri = DosyaIslemleri();
 
   @override
   Widget build(BuildContext context) {
@@ -44,13 +44,17 @@ class _UpdateAccountState extends State<UpdateAccount> {
             child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [Email(), UserName(), Password(), Sign(),Sign1(),Sign2()],
+                children: [Logo(), Email(), UserName(), Password(), Sign()],
               ),
             ),
           ),
         ),
       ),
     );
+  }
+
+  Widget Logo() {
+    return Image.asset("resimler/logo2.png");
   }
 
   Widget Email() {
@@ -113,11 +117,9 @@ class _UpdateAccountState extends State<UpdateAccount> {
         height: height / 15,
         child: ElevatedButton(
           onPressed: () {
-            final docUser = FirebaseFirestore.instance.collection("Person").doc(_auth.currentUser?.uid);
-            docUser.update({"username":_usernameController.text});
-            Navigator.push(context, MaterialPageRoute(builder: (context) => DrawerPage()));
+            _registerOnTap();
           },
-          child: Text("Ad Güncelle"),
+          child: Text("Kayıt Ol"),
           style: ElevatedButton.styleFrom(
             primary: Colors.red,
           ),
@@ -126,45 +128,28 @@ class _UpdateAccountState extends State<UpdateAccount> {
     );
   }
 
-  Widget Sign1() {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: SizedBox(
-        width: width,
-        height: height / 15,
-        child: ElevatedButton(
-          onPressed: () {
-            final docUser = FirebaseFirestore.instance.collection("Person").doc(_auth.currentUser?.uid);
-            docUser.update({"email":_emailController.text});
-            Navigator.push(context, MaterialPageRoute(builder: (context) => DrawerPage()));
-          },
-          child: Text("E-mail Güncelle"),
-          style: ElevatedButton.styleFrom(
-            primary: Colors.red,
-          ),
-        ),
-      ),
-    );
+  void _registerOnTap() {
+    if (_usernameController.text.isNotEmpty &&
+        _passwordController.text.isNotEmpty &&
+        _emailController.text.isNotEmpty) {
+      _authservice.createPerson(_usernameController.text, _emailController.text, _passwordController.text)
+          .then((value) => {Navigator.pop(context)})
+          .catchError((error){_warningToast(error);})
+          .whenComplete(() => null);
+    } else {
+      _warningToast("Lütfen istenilen bilgileri eksiksiz giriniz");
+    }
   }
 
-  Widget Sign2() {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: SizedBox(
-        width: width,
-        height: height / 15,
-        child: ElevatedButton(
-          onPressed: () {
-            final docUser = FirebaseFirestore.instance.collection("Person").doc(_auth.currentUser?.uid);
-            docUser.update({"password":_passwordController.text});
-            Navigator.push(context, MaterialPageRoute(builder: (context) => DrawerPage()));
-          },
-          child: Text("Şifre Güncelle"),
-          style: ElevatedButton.styleFrom(
-            primary: Colors.red,
-          ),
-        ),
-      ),
+  Future<bool?> _warningToast(String text) {
+    return Fluttertoast.showToast(
+        msg: text,
+        timeInSecForIosWeb: 2,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 14
     );
   }
 

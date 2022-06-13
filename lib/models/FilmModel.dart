@@ -1,5 +1,5 @@
-import 'package:netflixclone/Kategoriler.dart';
-import 'package:netflixclone/Yonetmenler.dart';
+import 'package:netflixclone/models/Kategoriler.dart';
+import 'package:netflixclone/models/Yonetmenler.dart';
 
 class FilmModel{
   late int id;

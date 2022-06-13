@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:netflixclone/FilmModel.dart';
+import 'package:netflixclone/models/FilmModel.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class Trailers extends StatefulWidget {

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:netflixclone/FavoriteList.dart';
-import 'package:netflixclone/FilmModel.dart';
+import 'package:netflixclone/utilities/FavoriteList.dart';
+import 'package:netflixclone/models/FilmModel.dart';
 
-import 'DetailPage.dart';
+import 'movie/DetailPage.dart';
 
 class Favourites extends StatefulWidget {
   late FilmModel film;
@@ -22,7 +22,7 @@ class _FavouritesState extends State<Favourites> {
     final double ekranYuksekligi = ekranBilgisi.size.height;
 
     /*setState(() {
-      FavoriteList.filmler.add(widget.film);
+      FavoriteList.filmler.add(widget.movie);
     });*/
 
     return Scaffold(

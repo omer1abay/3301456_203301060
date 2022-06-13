@@ -1,12 +1,12 @@
 import 'package:flutter/services.dart';
-import 'package:netflixclone/Drawer.dart';
+import 'package:netflixclone/pages/Drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:netflixclone/LoadingScreen.dart';
-import 'package:netflixclone/SignUp.dart';
-import 'package:netflixclone/User.dart';
-import 'auth_service.dart';
-import 'dosyaIslemleri.dart';
+import 'package:netflixclone/pages/LoadingScreen.dart';
+import 'package:netflixclone/pages/SignUp.dart';
+import 'package:netflixclone/models/User.dart';
+import '../services/auth_service.dart';
+import '../services/dosyaIslemleri.dart';
 
 class LoginPage extends StatefulWidget {
   static String ?username;

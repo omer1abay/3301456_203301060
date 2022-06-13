@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:netflixclone/DetailPage.dart';
-import 'package:netflixclone/FilmModel.dart';
-import 'package:netflixclone/FilmlerDao.dart';
-import 'package:netflixclone/Kategoriler.dart';
-import 'package:netflixclone/Trailers.dart';
-import 'package:netflixclone/Yonetmenler.dart';
+import 'package:netflixclone/pages/DetailPage.dart';
+import 'package:netflixclone/models/FilmModel.dart';
+import 'package:netflixclone/utilities/FilmlerDao.dart';
+import 'package:netflixclone/models/Kategoriler.dart';
+import 'package:netflixclone/pages/Trailers.dart';
+import 'package:netflixclone/models/Yonetmenler.dart';
 
 class FilmlerSayfa extends StatefulWidget {
   Kategoriler kategori;
