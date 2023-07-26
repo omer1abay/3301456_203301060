@@ -2,11 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:netflixclone/pages/Drawer.dart';
-import 'package:netflixclone/pages/Settings.dart';
+import 'package:netflixclone/views/home/Drawer.dart';
+import 'package:netflixclone/views/register/Settings.dart';
 import 'package:netflixclone/services/auth_service.dart';
 
-import '../models/User.dart';
+import '../../models/User.dart';
 
 class UpdateAccount extends StatefulWidget {
 

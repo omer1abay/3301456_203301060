@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:netflixclone/pages/LoadingScreen.dart';
+import 'package:netflixclone/views/LoadingScreen.dart';
 import 'package:netflixclone/services/auth_service.dart';
 import 'package:netflixclone/services/dosyaIslemleri.dart';
 
-import '../models/User.dart';
+import '../../models/User.dart';
 
 class SignUp extends StatefulWidget {
   static List<User> userList = <User>[];

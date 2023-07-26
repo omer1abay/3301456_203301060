@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:netflixclone/views/Favorites.dart';
+import 'package:netflixclone/views/movie/Favorites.dart';
 import 'package:netflixclone/views/login/LoginPage.dart';
-import 'package:netflixclone/views/MainPage.dart';
+import 'package:netflixclone/views/home/MainPage.dart';
 import 'package:netflixclone/views/Profile.dart';
 import 'package:netflixclone/views/register/Settings.dart';
 import 'package:netflixclone/views/register/SignUp.dart';

@@ -1,7 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:netflixclone/LoadingScreen.dart';
+import 'package:netflixclone/models/FilmModel.dart';
+import 'package:netflixclone/views/LoadingScreen.dart';
 
 class auth_service{
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -22,6 +23,19 @@ class auth_service{
     return user.user;
   }
 
+  Future createFilm(String filmName, double imdbPoint) async{
+    var user = _auth.currentUser;
+    final docFilm = _firestore.collection("Movies").doc("${filmName+user!.uid}");
+
+
+    final json = {
+      'filmName' : filmName,
+      'imdbPoint' : imdbPoint,
+      'id' : user.uid
+    };
+
+    await docFilm.set(json);
+  }
 
   Future<UserCredential> signInWithGoogle() async{
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();

@@ -1,6 +1,6 @@
 
-import 'package:netflixclone/Kategoriler.dart';
-import 'package:netflixclone/VeritabaniYardimcisi.dart';
+import 'package:netflixclone/models/Kategoriler.dart';
+import 'package:netflixclone/services/VeritabaniYardimcisi.dart';
 
 class KategorilerDao{
 

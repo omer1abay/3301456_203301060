@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:netflixclone/utilities/FavoriteList.dart';
-import 'package:netflixclone/pages/Favorites.dart';
+import 'package:netflixclone/services/auth_service.dart';
+import 'package:netflixclone/views/movie/Favorites.dart';
 import 'package:netflixclone/models/FilmModel.dart';
-import 'package:netflixclone/pages/LoginPage.dart';
-import 'package:netflixclone/pages/Trailers.dart';
+import 'package:netflixclone/views/login/LoginPage.dart';
+import 'package:netflixclone/views/movie/Trailers.dart';
 
 class DetailPage extends StatefulWidget {
   late FilmModel film;
@@ -17,7 +17,7 @@ class DetailPage extends StatefulWidget {
 
 class _DetailPageState extends State<DetailPage> {
   /*YoutubePlayerController _controller = YoutubePlayerController(
-    initialVideoId: widget.film!.videoName,
+    initialVideoId: widget.movie!.videoName,
   );*/
 
   @override
@@ -25,6 +25,7 @@ class _DetailPageState extends State<DetailPage> {
     var ekranBilgisi = MediaQuery.of(context);
     final double ekranGenisligi = ekranBilgisi.size.width;
     final double ekranYuksekligi = ekranBilgisi.size.height;
+    final _auth = auth_service();
 
     return Scaffold(
       appBar: AppBar(
@@ -40,7 +41,7 @@ class _DetailPageState extends State<DetailPage> {
           IconButton(
             icon: Icon(Icons.volunteer_activism),
             onPressed: () {
-              FavoriteList.filmler.add(widget.film);
+              _auth.createFilm(widget.film.filmName, widget.film.imdbPoint);
               Navigator.push(
                   context,
                   MaterialPageRoute(

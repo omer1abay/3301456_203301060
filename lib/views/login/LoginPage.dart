@@ -1,12 +1,12 @@
 import 'package:flutter/services.dart';
-import 'package:netflixclone/pages/Drawer.dart';
+import 'package:netflixclone/views/home/Drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:netflixclone/pages/LoadingScreen.dart';
-import 'package:netflixclone/pages/SignUp.dart';
+import 'package:netflixclone/views/LoadingScreen.dart';
+import 'package:netflixclone/views/register/SignUp.dart';
 import 'package:netflixclone/models/User.dart';
-import '../services/auth_service.dart';
-import '../services/dosyaIslemleri.dart';
+import '../../services/auth_service.dart';
+import '../../services/dosyaIslemleri.dart';
 
 class LoginPage extends StatefulWidget {
   static String ?username;
@@ -187,11 +187,13 @@ class _LoginPageState extends State<LoginPage> {
         if (error.toString().contains('wrong-password')) {
           _warningToast("Yanlış Parola");
         }
-        if (error.toString().contains('user-not-found')) {
+        else if (error.toString().contains('user-not-found')) {
           _warningToast("Girilen Kullanıcıya Ait Bilgiler Bulunamadı.");
         }
-        if (error.toString().contains('invalid-email')) {
+        else if (error.toString().contains('invalid-email')) {
           _warningToast("Lütfen Geçerli Bir E-mail Adresi Giriniz.");
+        }else{
+          _warningToast("${error.toString()}");
         }
       }).whenComplete(() => null);
     } else {

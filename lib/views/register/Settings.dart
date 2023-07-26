@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:netflixclone/pages/LoginPage.dart';
-import 'package:netflixclone/pages/UpdateAccount.dart';
+import 'package:netflixclone/views/login/LoginPage.dart';
+import 'package:netflixclone/views/register/UpdateAccount.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);

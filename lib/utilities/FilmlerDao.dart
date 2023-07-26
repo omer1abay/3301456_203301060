@@ -1,9 +1,9 @@
 
-import 'package:netflixclone/FilmModel.dart';
-import 'package:netflixclone/Kategoriler.dart';
-import 'package:netflixclone/Yonetmenler.dart';
+import 'package:netflixclone/models/FilmModel.dart';
+import 'package:netflixclone/models/Kategoriler.dart';
+import 'package:netflixclone/models/Yonetmenler.dart';
 
-import 'VeritabaniYardimcisi.dart';
+import '../services/VeritabaniYardimcisi.dart';
 
 class FilmlerDao{
   Future<List<FilmModel>> filmleriGetir(int kategori_id) async{

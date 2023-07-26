@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:netflixclone/models/Kategoriler.dart';
+import 'package:netflixclone/services/auth_service.dart';
 import 'package:netflixclone/utilities/KategorilerDao.dart';
+import 'package:netflixclone/views/login/LoginPage.dart';
 
-import 'movie/FilmlerSayfa.dart';
+import '../movie/FilmlerSayfa.dart';
 
 
 class MainPage extends StatefulWidget {
@@ -13,6 +15,8 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+
+  final _auth = auth_service();
 
   Future<List<Kategoriler>> listele() async {
     var kategoriListesi = await KategorilerDao().kategoriGetir();
@@ -26,6 +30,15 @@ class _MainPageState extends State<MainPage> {
       appBar: AppBar(
         title: const Text("Netflix"),
         backgroundColor: Colors.red,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.exit_to_app),
+            onPressed: () {
+              _auth.signOut();
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage()));
+            },
+          ),
+        ],
       ),
       body: FutureBuilder<List<Kategoriler>>(
         future: listele(),

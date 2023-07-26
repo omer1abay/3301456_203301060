@@ -12,6 +12,9 @@ class VeritabaniYardimcisi{
     String veritabaniYolu = join(await getDatabasesPath(), veritabaniAdi);
 
 
+    if(await databaseExists(veritabaniYolu)){
+      print("Veritabanı zaten mevcut");
+    }else{
       //assetten veritabanının alınması
       ByteData data = await rootBundle.load("veritabani/$veritabaniAdi");
       //Veritabanının kopyalama için byte dönüşümü
@@ -19,6 +22,7 @@ class VeritabaniYardimcisi{
       //Veritabanının kopyalanması.
       await File(veritabaniYolu).writeAsBytes(bytes,flush: true);
       print("Veri tabanı kopyalandı");
+    }
 
     //Veritabanını açıyoruz.
     return openDatabase(veritabaniYolu);
